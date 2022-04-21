@@ -18,3 +18,5 @@ jobs:
       run: docker build . --file Dockerfile --tag jtlrules/express-web-app:$(date +%s)
     - name: run Liatrio tests
       uses: liatrio/github-actions/apprentice-action@master
+    - name: Push the Docker image
+      run: docker push jtlrules/express-web-app
