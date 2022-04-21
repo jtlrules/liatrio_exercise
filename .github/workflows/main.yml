@@ -15,4 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jtlrules/liatrio-app:$(date +%s)
+      run: docker build . --file Dockerfile --tag jtlrules/express-web-app:$(date +%s)
+    - name: run Liatrio tests
+      uses: liatrio/github-actions/apprentice-action@master
