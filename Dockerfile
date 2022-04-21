@@ -15,5 +15,5 @@ COPY . ./
 # RUN chmod +x docker_run_server.sh
 EXPOSE 80
 # CMD [ "node", "app.js" ]
-CMD [ "npm", "start"]
+CMD [ "sudo", "npm", "start"]
 # ENTRYPOINT ["./docker_run_server.sh"]
