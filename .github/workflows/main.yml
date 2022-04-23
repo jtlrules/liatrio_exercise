@@ -14,18 +14,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . -t jtlrules/express-web-app:latest
     - name: Docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - name: Push the Docker image
-      run: docker push jtlrules/express-web-app:latest
+      run: echo "$MY_PASSWORD" | docker login -u $DOCKER_USER --password-stdin
+    - name: Build the Docker image
+      run: docker build . -t $DOCKER_USER/express-web-app:latest
+    #- name: Push the Docker image
+    #  run: docker push $DOCKER_USER/express-web-app:latest
     - name: Run Docker image
-      run: docker run -p 80:80 jtlrules/express-web-app:latest
+      run: docker run -p 80:80 $DOCKER_USER/express-web-app:latest
     - name: run Liatrio tests
       uses: liatrio/github-actions/apprentice-action@master
     - name: Push the Docker image
-      run: docker push jtlrules/express-web-app
+      run: docker push $DOCKER_USER/express-web-app:latest
