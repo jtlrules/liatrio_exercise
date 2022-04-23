@@ -28,7 +28,10 @@ jobs:
     - name: Run Docker image
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
-      run: docker run --rm -p 80:80 $DOCKER_USER/express-web-app
+      #run: docker run -p 80:80 $DOCKER_USER/express-web-app
+      runs:
+        using: docker
+        image: jtlrules/express-web-app
     - name: run Liatrio tests
       uses: liatrio/github-actions/apprentice-action@master
     - name: Push the Docker image
