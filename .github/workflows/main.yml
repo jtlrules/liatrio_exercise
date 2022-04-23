@@ -19,11 +19,11 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-    #- name: Build the Docker image
+    - name: Build the Docker image
       run: docker build . -t $DOCKER_USER/express-web-app:latest
     #- name: Push the Docker image
     #  run: docker push $DOCKER_USER/express-web-app:latest
-    #- name: Run Docker image
+    - name: Run Docker image
       run: docker run -p 80:80 $DOCKER_USER/express-web-app:latest
     - name: run Liatrio tests
       uses: liatrio/github-actions/apprentice-action@master
