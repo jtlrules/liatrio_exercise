@@ -12,8 +12,7 @@ RUN npm ci --only-production # npm install
 # Bundle app source
 COPY . ./
 
-# RUN chmod +x docker_run_server.sh
 EXPOSE 80
+
 # CMD [ "node", "app.js" ]
 CMD [ "npm", "start"]
-# ENTRYPOINT ["./docker_run_server.sh"]
