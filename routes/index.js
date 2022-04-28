@@ -15,8 +15,7 @@ router.get('/', function(req, res, next) {
   const ret_val =
   {
 	  message: "My name is " + name,
-	  timestamp: timestamp,
-    test: "test"
+	  timestamp: timestamp
   }
   return res.json(ret_val);
 })
